@@ -3,8 +3,9 @@ public class Crane {
     private int speed;
     private int safetyDistance;
 
-    public Crane(Trajectory traject, int speed, int safetyDistance){
-        this.traject = traject;
+    public Crane(int speed, int safetyDistance, int fieldX, int fieldY, Coordinate begin){
+        this.traject = new Trajectory(fieldX, fieldY);
+        traject.addTraject(0, begin);
         this.speed = speed;
         this.safetyDistance = safetyDistance;
     }
@@ -19,5 +20,9 @@ public class Crane {
 
     public int getSafetyDistance() {
         return safetyDistance;
+    }
+
+    public void move(Coordinate begin, Coordinate eind){
+
     }
 }
