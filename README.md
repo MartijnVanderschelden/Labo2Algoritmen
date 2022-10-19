@@ -36,4 +36,4 @@ class coordinaat
 class trajectory
   * Arraylist<int, Coordinates> <tijd, coordinaat>
 
-
+## Kranen
