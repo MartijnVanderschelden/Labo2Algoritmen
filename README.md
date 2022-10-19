@@ -24,7 +24,16 @@
 
 
 ## Coordinaten systeem
-class kraan
+class crane
+  * trajectory
+  * int speed
+  * int safetyDistance
 
-int[x][y] = 
+class coordinaat
+  * int x
+  * int y
+
+class trajectory
+  * Arraylist<int, Coordinates> <tijd, coordinaat>
+
 
