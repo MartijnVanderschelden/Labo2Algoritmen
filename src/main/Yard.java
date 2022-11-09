@@ -1,26 +1,27 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Yard {
     String name;
-    ArrayList<Slot> slots;
-    ArrayList<Container> containers;
+    HashMap<Integer, Slot> slots;
+    HashMap<Integer, Container> containers;
     ArrayList<Crane> cranes;
 
     public Yard() {
         this.name = null;
-        this.slots = new ArrayList<>();
-        this.containers = new ArrayList<>();
+        this.slots = new HashMap<>();
+        this.containers = new HashMap<>();
         this.cranes = new ArrayList<>();
     }
 
     public void addSlot(Slot slot){
-        slots.add(slot);
+        slots.put(slot.id, slot);
     }
 
     public void addContainer(Container container){
-        containers.add(container);
+        containers.put(container.id, container);
     }
 
     public void addCrane(Crane crane){

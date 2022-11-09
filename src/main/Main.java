@@ -22,7 +22,7 @@ public class Main {
         kraan1.move(new Coordinate(78, 140), kranen);
 
         Yard yard = new Yard();
-        readInputFile("jsonfiles/terminal_4_3.json", yard);
+        readInputFile("src/main/jsonfiles/terminal_4_3.json", yard);
 
         yard.addCrane(kraan1);
         yard.addCrane(kraan2);
@@ -61,7 +61,25 @@ public class Main {
             }
 
             //Read assignments
+            JSONArray assignments = (JSONArray) jsonObject.get("assignments");
+            for(int i=0; i < assignments.size(); i++){
+                JSONObject assignmentObject = (JSONObject) assignments.get(i);
+                JSONArray slot_ids = (JSONArray) assignmentObject.get("slot_id");
+                int idContainer = ((Long) assignmentObject.get("container_id")).intValue();
+                Container container = yard.containers.get(idContainer);
 
+                Slot[] slotsContainer = new Slot[yard.containers.get(idContainer).length];
+                for(int j=0; j < slot_ids.size(); j++){
+                    int slotId = ((Long) slot_ids.get(j)).intValue();
+                    slotsContainer[j] = yard.slots.get(slotId);
+                    yard.slots.get(slotId).containerStack.add(container);
+                }
+
+
+                int heightContainer = yard.slots.get(slotsContainer[0].id).getHeight();
+                yard.containers.get(idContainer).changePosition(slotsContainer, heightContainer);
+                System.out.println(heightContainer);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
