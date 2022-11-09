@@ -8,6 +8,8 @@ public class Crane {
     private int safetyDistance;
     private Coordinate currentPos;
 
+
+
     public Crane(int speed, int safetyDistance, int fieldX, int fieldY, Coordinate begin){
         this.traject = new Trajectory(fieldX, fieldY);
         traject.addStep(0, begin);
