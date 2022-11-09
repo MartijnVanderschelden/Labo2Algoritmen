@@ -1,3 +1,5 @@
+package main;
+
 import java.util.*;
 
 public class Trajectory {
@@ -20,7 +22,7 @@ public class Trajectory {
 
     @Override
     public String toString() {
-        return "Trajectory{" +
+        return "main.Trajectory{" +
                 "traject=" + traject +
                 ", fieldX=" + fieldX +
                 ", fieldY=" + fieldY +

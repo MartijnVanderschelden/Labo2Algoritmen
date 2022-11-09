@@ -1,3 +1,5 @@
+package main;
+
 import java.util.*;
 
 import static java.lang.Math.max;
@@ -53,7 +55,7 @@ public class Crane {
 
     @Override
     public String toString() {
-        return "Crane{" +
+        return "main.Crane{" +
                 "traject=" + traject +
                 ", speed=" + speed +
                 ", safetyDistance=" + safetyDistance +

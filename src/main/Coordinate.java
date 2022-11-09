@@ -1,3 +1,5 @@
+package main;
+
 public class Coordinate {
     private int x;
     private int y;
@@ -17,7 +19,7 @@ public class Coordinate {
 
     @Override
     public String toString() {
-        return "Coordinate{" +
+        return "main.Coordinate{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

@@ -1,3 +1,5 @@
+package main;
+
 public class Container {
     int id;
     int length;

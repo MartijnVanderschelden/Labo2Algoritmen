@@ -1,3 +1,5 @@
+package main;
+
 public class Slot {
     int id;
     Coordinate coordinate;
