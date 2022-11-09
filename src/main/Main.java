@@ -38,6 +38,7 @@ public class Main {
 
             //Read name
             String name = (String) jsonObject.get("name");
+            yard.name = name;
 
             //Read slots
             JSONArray slots = (JSONArray) jsonObject.get("slots");

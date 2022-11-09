@@ -3,11 +3,13 @@ package main;
 import java.util.ArrayList;
 
 public class Yard {
+    String name;
     ArrayList<Slot> slots;
     ArrayList<Container> containers;
     ArrayList<Crane> cranes;
 
     public Yard() {
+        this.name = null;
         this.slots = new ArrayList<>();
         this.containers = new ArrayList<>();
         this.cranes = new ArrayList<>();
