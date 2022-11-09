@@ -24,16 +24,16 @@
 
 
 ## Coordinaten systeem
-### class crane
+class crane
   * trajectory
   * int speed
   * int safetyDistance
 
-### class coordinaat
+class coordinaat
   * int x
   * int y
 
-### class trajectory
+class trajectory
   * Arraylist<int, Coordinates> <tijd, coordinaat>
 
 ## Testcases

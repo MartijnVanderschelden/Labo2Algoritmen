@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Trajectory {
-    private Map<Integer, Coordinate> traject = new HashMap<>();
+    private List<Step> traject = new ArrayList<>();
     final int fieldX;
     final int fieldY;
 
@@ -10,11 +10,22 @@ public class Trajectory {
         this.fieldY = fieldY;
     }
 
-    public void addTraject(int time, Coordinate coordinate){
-        traject.put(time, coordinate);
+    public void addStep(int time, Coordinate coordinate){
+        traject.add(new Step(time, coordinate));
     }
 
-    public Map<Integer, Coordinate> getTraject(){
+    public List<Step> getTraject(){
         return traject;
     }
+
+    @Override
+    public String toString() {
+        return "Trajectory{" +
+                "traject=" + traject +
+                ", fieldX=" + fieldX +
+                ", fieldY=" + fieldY +
+                '}';
+    }
+
+
 }
