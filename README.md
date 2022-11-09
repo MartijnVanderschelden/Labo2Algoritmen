@@ -24,16 +24,19 @@
 
 
 ## Coordinaten systeem
-class crane
+### class crane
   * trajectory
   * int speed
   * int safetyDistance
 
-class coordinaat
+### class coordinaat
   * int x
   * int y
 
-class trajectory
+### class trajectory
   * Arraylist<int, Coordinates> <tijd, coordinaat>
 
-
+## Testcases
+1. Kraan bereikt boundary op x-as/y-as
+2. Kraan bereikt komt in buurt van safety distance x/y
+3. 
