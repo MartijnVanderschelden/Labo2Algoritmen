@@ -8,6 +8,8 @@ public class Slot {
 
     ArrayList<Container> containerStack;
 
+    int minAllowedLength;
+
     public Slot(int id, Coordinate coordinate) {
         this.id = id;
         this.coordinate = coordinate;

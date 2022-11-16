@@ -53,6 +53,10 @@ public class Crane {
         return check;
     }
 
+    public void moveContainer(Container container, Slot slotBegin, Slot slotEnd){
+
+    }
+
     @Override
     public String toString() {
         return "main.Crane{" +
