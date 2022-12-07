@@ -19,6 +19,8 @@ public class Yard {
 
     // Target
     int targetMaxHeight;
+
+    // Key: containerID, Value: slotID
     HashMap<Integer, Integer> targetPosition;
 
     public Yard() {
