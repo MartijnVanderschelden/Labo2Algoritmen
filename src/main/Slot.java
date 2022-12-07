@@ -19,4 +19,14 @@ public class Slot {
     public int getHeight(){
         return containerStack.size();
     }
+
+    @Override
+    public String toString() {
+        return "Slot{" +
+                "id=" + id +
+                ", coordinate=" + coordinate +
+                ", containerStack=" + containerStack +
+                ", minAllowedLength=" + minAllowedLength +
+                '}';
+    }
 }

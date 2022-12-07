@@ -1,35 +1,53 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Yard {
+
+    // Input
     String name;
-    HashMap<Integer, Slot> slots;
-    HashMap<Integer, Container> containers;
+    int length;
+    int width;
+    int maxHeight;
+    Slot[] slots;
+    //ArrayList<Container> containers;
+    Container[] containers;
     ArrayList<Crane> cranes;
 
-    int maxHeight;
+
+    // Target
+    int targetMaxHeight;
+    HashMap<Integer, Integer> targetPosition;
 
     public Yard() {
         this.name = null;
-        this.slots = new HashMap<>();
-        this.containers = new HashMap<>();
         this.cranes = new ArrayList<>();
+        this.targetPosition = new HashMap<>();
+    }
+
+    public void createArrays(){
+        this.slots = new Slot[(length * width) + 1];
+        this.containers = new Container[(length * width) + 1];
     }
 
     public void addSlot(Slot slot){
-        slots.put(slot.id, slot);
+        slots[slot.id] = slot;
     }
 
     public void addContainer(Container container){
-        containers.put(container.id, container);
+        containers[container.id] = container;
     }
 
     public void addCrane(Crane crane){
         cranes.add(crane);
     }
 
+
+    public void addTargetPosition(int containerId, int slotId){
+        targetPosition.put(containerId, slotId);
+    }
     // Constraints
     public boolean checkConstraints(ArrayList<Slot> slots){
         boolean allowed = true;
@@ -45,10 +63,21 @@ public class Yard {
                 allowed = false;
             }
         }
-
-        
-
         return allowed;
     }
 
+    @Override
+    public String toString() {
+        return "Yard{" +
+                "name='" + name + '\'' +
+                ", length=" + length +
+                ", width=" + width +
+                ", maxHeight=" + maxHeight +
+                ", slots=" + Arrays.toString(slots) +
+                ", containers=" + Arrays.toString(containers) +
+                ", cranes=" + cranes +
+                ", targetMaxHeight=" + targetMaxHeight +
+                ", targetPosition=" + targetPosition +
+                '}';
+    }
 }

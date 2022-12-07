@@ -5,48 +5,46 @@ import java.util.*;
 import static java.lang.Math.max;
 
 public class Crane {
-    private Trajectory traject;
-    private int speed;
-    private int safetyDistance;
-    private Coordinate currentPos;
+    int id;
+    int xspeed;
+    int yspeed;
+    int xmin;
+    int xmax;
+    int ymin;
+    int ymax;
 
+    Coordinate currentPos;
+    Trajectory traject;
 
-
-    public Crane(int speed, int safetyDistance, int fieldX, int fieldY, Coordinate begin){
-        this.traject = new Trajectory(fieldX, fieldY);
-        traject.addStep(0, begin);
-        this.speed = speed;
-        this.safetyDistance = safetyDistance;
-        this.currentPos =  begin;
+    public Crane(int id, double x, double y, int xmin, int xmax, int ymin, int ymax, int xspeed, int yspeed){
+        this.id = id;
+        this.xmin = xmin;
+        this.xmax = xmax;
+        this.ymin = ymin;
+        this.ymax = ymax;
+        this.xspeed = xspeed;
+        this.yspeed = yspeed;
+        this.currentPos = new Coordinate(x, y);
+        //this.traject = new Trajectory(fieldX, fieldY);
+        //traject.addStep(0, begin);
     }
 
-    public Trajectory getTraject() {
-        return traject;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getSafetyDistance() {
-        return safetyDistance;
-    }
 
     public void move(Coordinate eind, List<Crane> kranen){
         if(check(eind, kranen)){
-            int timeX = Math.abs(eind.getX() - currentPos.getX()) * speed;
-            int timeY = Math.abs(eind.getY() - currentPos.getY()) * speed;
-            int time = max(timeX, timeY) + traject.getTraject().get(traject.getTraject().size()-1).getTime();
+            double timeX = Math.abs(eind.x - currentPos.x) * xspeed;
+            double timeY = Math.abs(eind.y - currentPos.y) * yspeed;
+            double time = max(timeX, timeY) + traject.getTraject().get(traject.getTraject().size()-1).getTime();
 
-            traject.addStep(time, eind);
+            //traject.addStep(time, eind);
         }
     }
 
     public boolean check(Coordinate eind, List<Crane> kranen){
         boolean check = false;
         for(int i=0; i < kranen.size(); i++){
-            if(Math.abs(kranen.get(i).currentPos.getX() - eind.getX()) > safetyDistance
-            || Math.abs(kranen.get(i).currentPos.getY() - eind.getY()) > safetyDistance){
+            if(Math.abs(kranen.get(i).currentPos.x - eind.x) > 1
+            || Math.abs(kranen.get(i).currentPos.y - eind.y) > 1){
                 check = true;
             }
         }
@@ -59,10 +57,16 @@ public class Crane {
 
     @Override
     public String toString() {
-        return "main.Crane{" +
-                "traject=" + traject +
-                ", speed=" + speed +
-                ", safetyDistance=" + safetyDistance +
+        return "Crane{" +
+                "id=" + id +
+                ", xspeed=" + xspeed +
+                ", yspeed=" + yspeed +
+                ", xmin=" + xmin +
+                ", xmax=" + xmax +
+                ", ymin=" + ymin +
+                ", ymax=" + ymax +
+                ", currentPos=" + currentPos +
+                ", traject=" + traject +
                 '}';
     }
 }
