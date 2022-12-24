@@ -83,10 +83,16 @@ public class JSONReader {
                 int container_id = ((Long) assignmentObject.get("container_id")).intValue();
                 Container container = yard.containers[container_id];
 
-                yard.slots[slot_id].containerStack.add(container);
+                yard.slots[slot_id].containers.add(container);
 
-                int heightContainer = yard.slots[slot_id].getHeight();
-                yard.containers[container_id].changePosition(slot_id, heightContainer);
+                //TODO
+                //dit is verkeerd
+                //int heightContainer = yard.slots[slot_id].getHeight();
+                //yard.containers[container_id].changePosition(slot_id, heightContainer);
+
+                //dit is voorlopig correct
+                yard.containers[container_id].slotId = slot_id;
+
                 //System.out.println(heightContainer);
             }
         } catch (Exception e) {
@@ -195,12 +201,16 @@ public class JSONReader {
                 int slot_id = ((Long) assignmentObject.get("slot_id")).intValue();
                 int container_id = ((Long) assignmentObject.get("container_id")).intValue();
                 Container container = yard.containers[container_id];
+                yard.containers[container_id].slotId = slot_id;
+                yard.slots[slot_id].containers.add(container);
 
-                yard.slots[slot_id].containerStack.add(container);
+                ///TODO
+                //dit is verkeerd
+                //int heightContainer = yard.slots[slot_id].getHeight();
+                //yard.containers[container_id].changePosition(slot_id, heightContainer);
 
-                int heightContainer = yard.slots[slot_id].getHeight();
-                yard.containers[container_id].changePosition(slot_id, heightContainer);
-                //System.out.println(heightContainer);
+                //dit is voorlopig correct
+                yard.containers[container_id].slotId = slot_id;
             }
         } catch (Exception e) {
             e.printStackTrace();

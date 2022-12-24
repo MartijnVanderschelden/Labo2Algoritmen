@@ -4,26 +4,25 @@ public class Slot {
     int id;
     Coordinate coordinate;
 
-    ArrayList<Container> containerStack;
+    ArrayList<Container> containers;
 
     int minAllowedLength;
 
     public Slot(int id, Coordinate coordinate) {
         this.id = id;
         this.coordinate = coordinate;
-        this.containerStack = new ArrayList<>();
+        this.containers = new ArrayList<>();
     }
 
-    public int getHeight(){
-        return containerStack.size();
-    }
+    //verkeerd
+
 
     @Override
     public String toString() {
         return "Slot{" +
                 "id=" + id +
                 ", coordinate=" + coordinate +
-                ", containerStack=" + containerStack +
+                ", containers=" + containers +
                 ", minAllowedLength=" + minAllowedLength +
                 '}';
     }
