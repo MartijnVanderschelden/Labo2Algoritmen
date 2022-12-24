@@ -15,7 +15,7 @@ public class Yard {
 
 
     // Target
-    int targetMaxHeight;
+    int targetHeight;
 
     // Key: containerID, Value: slotID
     HashMap<Integer, Integer> targetPosition;
@@ -74,7 +74,7 @@ public class Yard {
                 ", slots=" + Arrays.toString(slots) +
                 ", containers=" + Arrays.toString(containers) +
                 ", cranes=" + cranes +
-                ", targetMaxHeight=" + targetMaxHeight +
+                ", targetMaxHeight=" + targetHeight +
                 ", targetPosition=" + targetPosition +
                 '}';
     }

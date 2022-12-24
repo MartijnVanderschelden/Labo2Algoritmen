@@ -99,7 +99,7 @@ public class JSONReader {
             JSONObject jsonObject = (JSONObject) obj;
 
             //Read targetMaxHeight
-            yard.targetMaxHeight = ((Long) jsonObject.get("maxheight")).intValue();
+            yard.targetHeight = ((Long) jsonObject.get("maxheight")).intValue();
 
 
             //Read target assignments
@@ -145,7 +145,7 @@ public class JSONReader {
             yard.maxHeight = ((Long) jsonObject.get("maxheight")).intValue();
 
             //Read targetMaxHeight
-            yard.targetMaxHeight = ((Long) jsonObject.get("maxheight")).intValue();
+            yard.targetHeight = ((Long) jsonObject.get("targetheight")).intValue();
 
             yard.createArrays(Integer.parseInt(stringArr[1])*Integer.parseInt(stringArr[2]),
                     Integer.parseInt(stringArr[5]));
