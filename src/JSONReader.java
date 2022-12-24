@@ -1,6 +1,7 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.FileReader;
 
@@ -8,6 +9,10 @@ public class JSONReader {
 
     // 2 inputFiles: create Yard as target output
     public Yard readInputFile(String filePathInput, String filePathTarget) {
+        String[] filenameArr = filePathInput.split("/");
+        String filename = FilenameUtils.removeExtension(filenameArr[2]);
+        String[] stringArr = filename.split("_");
+
         JSONParser jsonParser = new JSONParser();
         Yard yard = new Yard();
 
@@ -29,7 +34,8 @@ public class JSONReader {
             //Read maxheight
             yard.maxHeight = ((Long) jsonObject.get("maxheight")).intValue();
 
-            yard.createArrays();
+            yard.createArrays(Integer.parseInt(stringArr[1])*Integer.parseInt(stringArr[2]),
+                    Integer.parseInt(stringArr[5]));
 
             //Read slots
             JSONArray slots = (JSONArray) jsonObject.get("slots");
@@ -81,7 +87,7 @@ public class JSONReader {
 
                 int heightContainer = yard.slots[slot_id].getHeight();
                 yard.containers[container_id].changePosition(slot_id, heightContainer);
-                System.out.println(heightContainer);
+                //System.out.println(heightContainer);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,6 +119,10 @@ public class JSONReader {
 
     // 1 inputFile: change maxHeight of yard to targetHeight
     public Yard readInputFile(String filePathInput) {
+        String[] filenameArr = filePathInput.split("/");
+        String filename = FilenameUtils.removeExtension(filenameArr[2]);
+        String[] stringArr = filename.split("_");
+
         JSONParser jsonParser = new JSONParser();
         Yard yard = new Yard();
 
@@ -137,7 +147,8 @@ public class JSONReader {
             //Read targetMaxHeight
             yard.targetMaxHeight = ((Long) jsonObject.get("maxheight")).intValue();
 
-            yard.createArrays();
+            yard.createArrays(Integer.parseInt(stringArr[1])*Integer.parseInt(stringArr[2]),
+                    Integer.parseInt(stringArr[5]));
 
             //Read slots
             JSONArray slots = (JSONArray) jsonObject.get("slots");
@@ -189,7 +200,7 @@ public class JSONReader {
 
                 int heightContainer = yard.slots[slot_id].getHeight();
                 yard.containers[container_id].changePosition(slot_id, heightContainer);
-                System.out.println(heightContainer);
+                //System.out.println(heightContainer);
             }
         } catch (Exception e) {
             e.printStackTrace();

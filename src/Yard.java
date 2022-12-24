@@ -10,7 +10,6 @@ public class Yard {
     int width;
     int maxHeight;
     Slot[] slots;
-    //ArrayList<Container> containers;
     Container[] containers;
     ArrayList<Crane> cranes;
 
@@ -27,9 +26,9 @@ public class Yard {
         this.targetPosition = new HashMap<>();
     }
 
-    public void createArrays(){
-        this.slots = new Slot[(length * width) + 1];
-        this.containers = new Container[(length * width) + 1];
+    public void createArrays(int numberOfSlots, int numberOfContainers){
+        this.slots = new Slot[numberOfSlots];
+        this.containers = new Container[numberOfContainers];
     }
 
     public void addSlot(Slot slot){
@@ -43,7 +42,6 @@ public class Yard {
     public void addCrane(Crane crane){
         cranes.add(crane);
     }
-
 
     public void addTargetPosition(int containerId, int slotId){
         targetPosition.put(containerId, slotId);
