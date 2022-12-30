@@ -11,98 +11,70 @@ public class Yard {
     Container[] containers;
     ArrayList<Crane> cranes;
     HashMap<Integer, Integer> targetPosition; // Key: containerID, Value: slotID
-
-
     //used datastructeres and additional variables
-    ArrayList<ArrayList<Container>> containerStack;
-    boolean[][][] grid;
-    int height;
+    boolean [][][] grid;
+    ArrayList<ArrayList<Container>> containerSurfacePerLvl;
 
     public Yard() {
-        this.height = 0;
         this.name = null;
         this.cranes = new ArrayList<>();
         this.targetPosition = new HashMap<>();
-        this.containerStack = new ArrayList<>();
+        this.containerSurfacePerLvl = new ArrayList<>();
     }
-
     public void createArrays(int numberOfSlots, int numberOfContainers){
         this.slots = new Slot[numberOfSlots];
         this.containers = new Container[numberOfContainers];
         this.grid = new boolean[length][width][maxHeight];
     }
-
     public void addSlot(Slot slot){
         slots[slot.id] = slot;
     }
-
     public void addContainer(Container container){
         containers[container.id] = container;
     }
-
     public void addCrane(Crane crane){
         cranes.add(crane);
     }
-
     public void addTargetPosition(int containerId, int slotId){
         targetPosition.put(containerId, slotId);
     }
-
-    /* methode werkt niet meer, getHeight() methode was verkeerd
-    public boolean checkConstraints(ArrayList<Slot> slots){
-
-        boolean allowed = true;
-        for(int i=0; i<slots.size(); i++){
-            if(slots.get(i).getHeight()+1 > maxHeight){
-                allowed = false;
-            }
-        }
-
-        int equalHeight = slots.get(0).getHeight();
-        for(int i=1; i<slots.size()-1; i++){
-            if(slots.get(i).getHeight() != equalHeight){
-                allowed = false;
-            }
-        }
-        return allowed;
-    }
-     */
-
     public void generateFeasibleInitialStack(){
-        /*
-        STAP 1
-        Genereer een lijst waarin de containers gesorteerd zitten
-        op lengte. Plaats ze daarna op een stack.
-        Grootste onderaan, kleinste bovenaan
-         */
-        ArrayList<Container> sortedContainerList = new ArrayList<>();
-        for (Container c :
-                containers) {
-            sortedContainerList.add(c);
-        }
-        Collections.sort(sortedContainerList, new sortByLength());
-        Collections.reverse(sortedContainerList);
-
         Stack<Container> stack = new Stack<>();
-        for (Container c :
-                sortedContainerList) {
-            stack.push(c);
+        for (int i = 0; i < containers.length; i++) {
+            stack.push(containers[containers.length-1-i]);
         }
-        /*
-        STAP 2
-        Plaats de containers volgens de assignments in de grid.
-
-        Strategie:
-        De kleinste containers eerst, daarna de grotere.
-        Als het slot al ingenomen is, wordt de container
-        toegevoegd aan een lijst die in aanmerking komt
-        voor de volgende verdieping.
-         */
-
+        boolean[][][] yardIn3D = new boolean[length][width][maxHeight];
+        int level = 0;
         ArrayList<Container> temp = new ArrayList<>();
         while (!stack.empty()){
-            Container container = stack.peek();
+            Container currContainer = stack.peek();
+            Coordinate c = currContainer.getCoordinate(length);
+            System.out.println(level + " " + currContainer.id);
+            if (yardIn3D[(int) c.x][(int) c.y][level]){
+                containerSurfacePerLvl.add(temp);
+                temp = new ArrayList<>();
+                level++;
+            } else {
+                for (int i = 0; i < currContainer.length; i++) {
+                    yardIn3D[(int) c.x + currContainer.length -1][(int) c.y][level] = true;
+                }
+                temp.add(currContainer);
+                stack.pop();
+            }
+        }
+        containerSurfacePerLvl.add(temp);
 
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++) {
+                for (int k = 0; k < maxHeight; k++) {
+                    grid[i][j][k] = yardIn3D[i][j][k];
+                }
+            }
+        }
+        System.out.println(containerSurfacePerLvl);
+        for (ArrayList<Container> cList :
+                containerSurfacePerLvl) {
+            System.out.println(cList.size());
         }
     }
 
