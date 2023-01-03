@@ -2,6 +2,7 @@ public class Container {
     int id;
     int length;
     int slotId;
+    int height;
 
     public Container(int id, int length) {
         this.id = id;

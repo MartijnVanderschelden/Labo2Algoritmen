@@ -4,6 +4,7 @@ import org.json.simple.parser.JSONParser;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.FileReader;
+import java.util.Stack;
 
 public class JSONReader {
 
@@ -46,6 +47,9 @@ public class JSONReader {
                 int x = ((Long) slotsObj.get("x")).intValue();
                 int y = ((Long) slotsObj.get("y")).intValue();
                 yard.addSlot(new Slot(id, new Coordinate(x, y)));
+                yard.currentPosition.put(id, new Stack<>());
+                yard.targetPosition.put(id, new Stack<>());
+                yard.mapOfSlots[x][y] = id;
             }
 
             //Read cranes
@@ -82,18 +86,31 @@ public class JSONReader {
                 int slot_id = ((Long) assignmentObject.get("slot_id")).intValue();
                 int container_id = ((Long) assignmentObject.get("container_id")).intValue();
                 Container container = yard.containers[container_id];
+                int containterLength = container.length;
+                if(containterLength == 1){
+                    yard.currentPosition.get(slot_id).push(container);
+                    yard.slots[slot_id].containers.add(container);
+                } else{
+                    for(int j=0; j<containterLength; j++){
+                        yard.currentPosition.get(slot_id+j).push(container);
+                        yard.slots[slot_id+j].containers.add(container);
+                    }
+                }
+                container.height = yard.slots[slot_id].containers.size();
+                container.slotId = slot_id;
 
-                yard.slots[slot_id].containers.add(container);
-
-                //TODO
-                //dit is verkeerd
-                //int heightContainer = yard.slots[slot_id].getHeight();
-                //yard.containers[container_id].changePosition(slot_id, heightContainer);
-
-                //dit is voorlopig correct
-                yard.containers[container_id].slotId = slot_id;
-
-                //System.out.println(heightContainer);
+                // ! ANDERE BRANCH
+//                yard.slots[slot_id].containers.add(container);
+//
+//                //TODO
+//                //dit is verkeerd
+//                //int heightContainer = yard.slots[slot_id].getHeight();
+//                //yard.containers[container_id].changePosition(slot_id, heightContainer);
+//
+//                //dit is voorlopig correct
+//                yard.containers[container_id].slotId = slot_id;
+//
+//                //System.out.println(heightContainer);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,10 +129,20 @@ public class JSONReader {
             JSONArray targetAssignments = (JSONArray) jsonObject.get("assignments");
             for(int i=0; i < targetAssignments.size(); i++){
                 JSONObject slotsObj = (JSONObject) targetAssignments.get(i);
-
                 int slot_id = ((Long) slotsObj.get("slot_id")).intValue();
                 int container_id = ((Long) slotsObj.get("container_id")).intValue();
-                yard.addTargetPosition(container_id, slot_id);
+                Container container = yard.containers[container_id];
+                int containterLength = container.length;
+                if(containterLength == 1){
+                    yard.targetPosition.get(slot_id).push(container);
+                    //yard.slots[slot_id].containers.add(container);
+                } else{
+                    for(int j=0; j<containterLength; j++){
+                        yard.targetPosition.get(slot_id+j).push(container);
+                        //yard.slots[slot_id+j].containers.add(container);
+                    }
+                }
+                yard.targetPositionMapContainerKey.put(container_id, slot_id);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,6 +192,7 @@ public class JSONReader {
                 int x = ((Long) slotsObj.get("x")).intValue();
                 int y = ((Long) slotsObj.get("y")).intValue();
                 yard.addSlot(new Slot(id, new Coordinate(x, y)));
+                yard.mapOfSlots[x][y] = id;
             }
 
             //Read cranes
@@ -201,16 +229,30 @@ public class JSONReader {
                 int slot_id = ((Long) assignmentObject.get("slot_id")).intValue();
                 int container_id = ((Long) assignmentObject.get("container_id")).intValue();
                 Container container = yard.containers[container_id];
-                yard.containers[container_id].slotId = slot_id;
-                yard.slots[slot_id].containers.add(container);
+                int containterLength = container.length;
+                if(containterLength == 1){
+                    yard.currentPosition.get(slot_id).push(container);
+                    yard.slots[slot_id].containers.add(container);
+                } else{
+                    for(int j=0; j<containterLength; j++){
+                        yard.currentPosition.get(slot_id+j).push(container);
+                        yard.slots[slot_id+j].containers.add(container);
+                    }
+                }
+                container.height = yard.slots[slot_id].containers.size();
+                container.slotId = slot_id;
 
-                ///TODO
-                //dit is verkeerd
-                //int heightContainer = yard.slots[slot_id].getHeight();
-                //yard.containers[container_id].changePosition(slot_id, heightContainer);
-
-                //dit is voorlopig correct
-                yard.containers[container_id].slotId = slot_id;
+                // !ANDERE BRANCH
+//                yard.containers[container_id].slotId = slot_id;
+//                yard.slots[slot_id].containers.add(container);
+//
+//                ///TODO
+//                //dit is verkeerd
+//                //int heightContainer = yard.slots[slot_id].getHeight();
+//                //yard.containers[container_id].changePosition(slot_id, heightContainer);
+//
+//                //dit is voorlopig correct
+//                yard.containers[container_id].slotId = slot_id;
             }
         } catch (Exception e) {
             e.printStackTrace();

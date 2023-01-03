@@ -14,9 +14,6 @@ public class Slot {
         this.containers = new ArrayList<>();
     }
 
-    //verkeerd
-
-
     @Override
     public String toString() {
         return "Slot{" +

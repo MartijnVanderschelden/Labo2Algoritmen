@@ -12,7 +12,7 @@ public class Crane {
     int ymax;
 
     Coordinate currentPos;
-    Trajectory traject;
+    ArrayList<Traject> traject;
 
     public Crane(int id, double x, double y, int xmin, int xmax, int ymin, int ymax, int xspeed, int yspeed){
         this.id = id;
@@ -23,20 +23,16 @@ public class Crane {
         this.xspeed = xspeed;
         this.yspeed = yspeed;
         this.currentPos = new Coordinate(x, y);
-        //this.traject = new Trajectory(fieldX, fieldY);
-        //traject.addStep(0, begin);
     }
 
 
-    public void move(Coordinate eind, List<Crane> kranen){
-        if(check(eind, kranen)){
-            double timeX = Math.abs(eind.x - currentPos.x) * xspeed;
-            double timeY = Math.abs(eind.y - currentPos.y) * yspeed;
-            double time = max(timeX, timeY) + traject.getTraject().get(traject.getTraject().size()-1).getTime();
-
-            //traject.addStep(time, eind);
-        }
-    }
+//    public void move(Coordinate eind, List<Crane> kranen){
+//        if(check(eind, kranen)){
+//            double timeX = Math.abs(eind.x - currentPos.x) * xspeed;
+//            double timeY = Math.abs(eind.y - currentPos.y) * yspeed;
+//            double time = max(timeX, timeY) + traject.getTraject().get(traject.getTraject().size()-1).getTime();
+//        }
+//    }
 
     public boolean check(Coordinate eind, List<Crane> kranen){
         boolean check = false;
@@ -47,10 +43,6 @@ public class Crane {
             }
         }
         return check;
-    }
-
-    public void moveContainer(Container container, Slot slotBegin, Slot slotEnd){
-
     }
 
     @Override
