@@ -320,7 +320,9 @@ public class Yard {
         }
     }
 
-
+//////////////////////////////////////////////////////////
+// ALGEMENE FUNCTIES: Container en kraan bewegingen
+// ////////////////////////////////////////////////////////
     public void moveContainer(Container contToMove, int destSlot){
         System.out.println("Cont: " + contToMove.id + "; length: " + contToMove.length);
         for(int l=0; l<contToMove.length; l++){
