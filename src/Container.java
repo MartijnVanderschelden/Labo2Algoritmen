@@ -9,12 +9,6 @@ public class Container {
         this.length = length;
     }
 
-    public Coordinate getCoordinate(int length){
-        double x = slotId%length;
-        double y = Math.floorDiv(slotId,length);
-        return new Coordinate(x,y);
-    }
-
     @Override
     public String toString() {
         return "Container{" +

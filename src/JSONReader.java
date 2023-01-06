@@ -57,8 +57,8 @@ public class JSONReader {
             for(int i=0; i < cranes.size(); i++){
                 JSONObject cranesObj = (JSONObject) cranes.get(i);
 
-                double x = ((Number)  cranesObj.get("x")).doubleValue();
-                double y = ((Number)  cranesObj.get("y")).doubleValue();
+                int x = ((Long) cranesObj.get("x")).intValue();
+                int y = ((Long)  cranesObj.get("y")).intValue();
                 int ymin = ((Long) cranesObj.get("ymin")).intValue();
                 int ymax = ((Long) cranesObj.get("ymax")).intValue();
                 int id = ((Long) cranesObj.get("id")).intValue();
@@ -191,6 +191,7 @@ public class JSONReader {
                 int id = ((Long) slotsObj.get("id")).intValue();
                 int x = ((Long) slotsObj.get("x")).intValue();
                 int y = ((Long) slotsObj.get("y")).intValue();
+                yard.currentPosition.put(id, new Stack<>());
                 yard.addSlot(new Slot(id, new Coordinate(x, y)));
                 yard.mapOfSlots[x][y] = id;
             }
@@ -200,8 +201,8 @@ public class JSONReader {
             for (int i = 0; i < cranes.size(); i++) {
                 JSONObject cranesObj = (JSONObject) cranes.get(i);
 
-                double x = ((Number) cranesObj.get("x")).doubleValue();
-                double y = ((Number) cranesObj.get("y")).doubleValue();
+                int x = ((Long) cranesObj.get("x")).intValue();
+                int y = ((Long) cranesObj.get("y")).intValue();
                 int ymin = ((Long) cranesObj.get("ymin")).intValue();
                 int ymax = ((Long) cranesObj.get("ymax")).intValue();
                 int id = ((Long) cranesObj.get("id")).intValue();
