@@ -1,4 +1,4 @@
-# Kraanbewegingen op een yard - labo 2
+# Kraanbewegingen op een containerterminal
 ## Algemeen
 Twee mogelijke probleemsituaties
 1. Een yard bekomen waarbij de hoogte van de stapels containers een bepaalde maximumhoogte niet mag overschrijden
