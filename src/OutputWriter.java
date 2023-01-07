@@ -2,7 +2,7 @@ import java.io.*;
 
 public class OutputWriter {
     public void writeOutput(Yard yard, String outputFileName) throws IOException {
-        File outputFile = new File(outputFileName);
+        File outputFile = new File("outputFiles/" + outputFileName);
         FileOutputStream ofs = new FileOutputStream(outputFile);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(ofs));

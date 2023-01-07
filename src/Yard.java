@@ -47,6 +47,10 @@ public class Yard {
         cranes.add(crane);
     }
 
+
+//////////////////////////////////////////////////////////
+// ALGO VOOR TARGET POSITION
+// ////////////////////////////////////////////////////////
     public void getDifferences(){
         // Alle slots overlopen
         for(int i=0; i<slots.length; i++){
@@ -69,7 +73,7 @@ public class Yard {
 
     public void moveContainers(){
         for(int cIdToMove : containersToMove){
-            System.out.println("Slotid: " + targetPositionMapContainerKey.get(cIdToMove));
+//            System.out.println("Slotid: " + targetPositionMapContainerKey.get(cIdToMove));
             int slotIdWithContainerToMove = containers[cIdToMove].slotId;
 
             ArrayList<Container> containersToMoveBack = new ArrayList<>();
@@ -79,16 +83,12 @@ public class Yard {
                 int targetSlotId = targetPositionMapContainerKey.get(cIdToMove);
                 if(topCont.id == cIdToMove){
                     if(ifPossibleToPlace(topCont.length, targetSlotId)){
-                        currentPosition.get(topCont.slotId).remove(topCont);
-                        System.out.println("Cont: " + topCont.id + " moved from: " + topCont.slotId + " to: " + targetSlotId);;
-                        currentPosition.get(targetSlotId).add(topCont);
-                        topCont.slotId = targetSlotId;
+                        calcCraneMovement(topCont, topCont.slotId, targetSlotId);
+                        moveContainer(topCont, targetSlotId);
                         for(int j=containersToMoveBack.size()-1; j==0; j--){
                             Container cont = containersToMoveBack.get(j);
-                            currentPosition.get(cont.slotId).remove(cont);
-                            System.out.println("Cont: " + cont.id + " moved from: " + cont.slotId + " to: " + targetSlotId);
-                            currentPosition.get(targetSlotId).add(cont);
-                            cont.slotId = targetSlotId;
+                            calcCraneMovement(cont, cont.slotId, targetSlotId);
+                            moveContainer(cont, targetSlotId);
                             containersToMoveBack.remove(cont);
                         }
                     }
@@ -97,10 +97,8 @@ public class Yard {
                     if(freeSlot == -1){
                         System.out.println("LOL PROBLEEM");
                     } else {
-                        currentPosition.get(topCont.slotId).remove(topCont);
-                        System.out.println("Cont: " + topCont.id + " moved from: " + topCont.slotId + " to: " + freeSlot);
-                        currentPosition.get(freeSlot).add(topCont);
-                        topCont.slotId = freeSlot;
+                        calcCraneMovement(topCont, topCont.slotId, freeSlot);
+                        moveContainer(topCont, freeSlot);
                         containersToMoveBack.add(topCont);
                     }
                 }
