@@ -18,8 +18,9 @@ De output wordt weggeschreven naar `/outputFiles` als een `.csv` bestand. Op de 
 wordt de volgorde en de naam van de gegevens neergeschreven. De overige lijnen bestaan uit elk één kraanbeweging
 met de waarden in dezelfde volgorde als terugtevinden op de eerste regel.
 
-## JAR
+## JAR - Java 17
 `java -jar .\Terminal.jar .\src\jsonfiles\MH2Terminal_20_10_3_2_160.json`  
 of  
 `java -jar .\Terminal.jar .\src\jsonfiles\TerminalA_20_10_3_2_160.json .\src\jsonfiles\targetTerminalA_20_10_3_2_160.json`  
 Output file wordt geschreven naar dezelfde map als waar de .JAR staat met als bestandsnaam 'output_*fileName*.csv'
+
