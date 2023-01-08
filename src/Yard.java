@@ -375,14 +375,15 @@ public class Yard {
                     int startTime = time;
                     int endTime;
                     if(crane.currentPos.x < craneToUse.currentPos.x){
-                        crane.currentPos.x = leftX;
-                        endTime = Math.abs(startX-leftX) * crane.xspeed;
+                        crane.currentPos.x = leftX-1;
+                        endTime = time + Math.abs(startX-leftX-1) * crane.xspeed;
 
                     } else {
-                        crane.currentPos.x = rightX;
-                        endTime = Math.abs(startX-rightX) * crane.xspeed;
+                        crane.currentPos.x = rightX+1;
+                        endTime = time + Math.abs(startX-rightX+1) * crane.xspeed;
                     }
                     traject.add(new Traject(crane.id, -1, startTime, endTime, startX, startY, crane.currentPos.x, crane.currentPos.y));
+                    time = endTime;
                 }
             }
         }
