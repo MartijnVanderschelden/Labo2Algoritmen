@@ -19,7 +19,7 @@ wordt de volgorde en de naam van de gegevens neergeschreven. De overige lijnen b
 met de waarden in dezelfde volgorde als terugtevinden op de eerste regel.
 
 ## JAR
-`java -jar .\terminal.jar .\src\jsonfiles\MH2Terminal_20_10_3_2_160.json`  
+`java -jar .\Terminal.jar .\src\jsonfiles\MH2Terminal_20_10_3_2_160.json`  
 of  
-`java -jar .\Labo2Algoritmen.jar .\src\jsonfiles\TerminalA_20_10_3_2_160.json .\src\jsonfiles\targetTerminalA_20_10_3_2_160.json`  
+`java -jar .\Terminal.jar .\src\jsonfiles\TerminalA_20_10_3_2_160.json .\src\jsonfiles\targetTerminalA_20_10_3_2_160.json`  
 Output file wordt geschreven naar dezelfde map als waar de .JAR staat met als bestandsnaam 'output_*fileName*.csv'
