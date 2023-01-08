@@ -17,3 +17,9 @@ Twee mogelijke probleemsituaties
 De output wordt weggeschreven naar `/outputFiles` als een `.csv` bestand. Op de eerste regel van het bestand 
 wordt de volgorde en de naam van de gegevens neergeschreven. De overige lijnen bestaan uit elk één kraanbeweging
 met de waarden in dezelfde volgorde als terugtevinden op de eerste regel.
+
+## JAR
+`java -jar .\terminal.jar .\src\jsonfiles\MH2Terminal_20_10_3_2_160.json`  
+of  
+`java -jar .\Labo2Algoritmen.jar .\src\jsonfiles\TerminalA_20_10_3_2_160.json .\src\jsonfiles\targetTerminalA_20_10_3_2_160.json`  
+Output file wordt geschreven naar dezelfde map als waar de .JAR staat met als bestandsnaam 'output_*fileName*.csv'
