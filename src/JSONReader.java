@@ -10,8 +10,7 @@ public class JSONReader {
 
     // 2 inputFiles: create Yard as target output
     public Yard readInputFile(String filePathInput, String filePathTarget) {
-        String[] filenameArr = filePathInput.split("/");
-        String filename = FilenameUtils.removeExtension(filenameArr[2]);
+        String filename = FilenameUtils.removeExtension(filePathInput);
         String[] stringArr = filename.split("_");
 
         JSONParser jsonParser = new JSONParser();
@@ -98,19 +97,6 @@ public class JSONReader {
                 }
                 container.height = yard.slots[slot_id].containers.size();
                 container.slotId = slot_id;
-
-                // ! ANDERE BRANCH
-//                yard.slots[slot_id].containers.add(container);
-//
-//                //TODO
-//                //dit is verkeerd
-//                //int heightContainer = yard.slots[slot_id].getHeight();
-//                //yard.containers[container_id].changePosition(slot_id, heightContainer);
-//
-//                //dit is voorlopig correct
-//                yard.containers[container_id].slotId = slot_id;
-//
-//                //System.out.println(heightContainer);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,8 +138,7 @@ public class JSONReader {
 
     // 1 inputFile: change maxHeight of yard to targetHeight
     public Yard readInputFile(String filePathInput) {
-        String[] filenameArr = filePathInput.split("/");
-        String filename = FilenameUtils.removeExtension(filenameArr[2]);
+        String filename = FilenameUtils.removeExtension(filePathInput);
         String[] stringArr = filename.split("_");
 
         JSONParser jsonParser = new JSONParser();
@@ -242,18 +227,6 @@ public class JSONReader {
                 }
                 container.height = yard.slots[slot_id].containers.size();
                 container.slotId = slot_id;
-
-                // !ANDERE BRANCH
-//                yard.containers[container_id].slotId = slot_id;
-//                yard.slots[slot_id].containers.add(container);
-//
-//                ///TODO
-//                //dit is verkeerd
-//                //int heightContainer = yard.slots[slot_id].getHeight();
-//                //yard.containers[container_id].changePosition(slot_id, heightContainer);
-//
-//                //dit is voorlopig correct
-//                yard.containers[container_id].slotId = slot_id;
             }
         } catch (Exception e) {
             e.printStackTrace();
