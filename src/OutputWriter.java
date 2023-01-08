@@ -7,16 +7,16 @@ public class OutputWriter {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(ofs));
 
-        bw.write("%CraneId,ContainerId,PickupTime,EndTime,PickupPosX,PickupPosY,EndPosX,EndPosY");
+        bw.write("%CraneId;ContainerId;PickupTime;EndTime;PickupPosX;PickupPosY;EndPosX;EndPosY");
         bw.newLine();
         for(Traject t : yard.traject){
             String containerId = String.valueOf(t.containerId);
             if(t.containerId == -1){
                 containerId = "";
             }
-            String outputLine = t.craneId + "," + containerId
-                    + "," + t.pickupTime + "," + t.endTime + "," + t.pickupX
-                    + "," + t.pickupY + "," + t.endPosX + "," + t.endPosY;
+            String outputLine = t.craneId + ";" + containerId
+                    + ";" + t.pickupTime + ";" + t.endTime + ";" + t.pickupX
+                    + ";" + t.pickupY + ";" + t.endPosX + ";" + t.endPosY;
             bw.write(outputLine);
             bw.newLine();
         }

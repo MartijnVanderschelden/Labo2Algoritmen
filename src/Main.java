@@ -11,21 +11,21 @@ public class Main {
         /////////////////////////////
 //        String inputFile = "Terminal_10_10_3_1_100";
 //        String targetFile = "targetTerminal_10_10_3_1_100";
-//        String inputFile = "TerminalA_20_10_3_2_100";
-//        String targetFile = "targetTerminalA_20_10_3_2_100";
-//        String inputFile = "TerminalA_20_10_3_2_160";
-//        String targetFile = "targetTerminalA_20_10_3_2_160";
-//        String inputFile = "TerminalB_20_10_3_2_160";
-//        String targetFile = "targetTerminalB_20_10_3_2_160";
-//        String inputFile = "TerminalC_10_10_3_2_80";
-//        String targetFile = "targetTerminalC_10_10_3_2_80";
-//        String inputFile = "TerminalD_10_10_3_2_80";
-//        String targetFile = "targetTerminalD_10_10_3_2_80";
-//        String inputFile = "TerminalE_10_10_3_2_100";
-//        String targetFile = "targetTerminalE_10_10_3_2_100";
-//        String inputFile = "TerminalF_10_10_3_2_100";
-//        String targetFile = "targetTerminalF_10_10_3_2_100";
-
+////        String inputFile = "TerminalA_20_10_3_2_100";
+////        String targetFile = "targetTerminalA_20_10_3_2_100";
+////        String inputFile = "TerminalA_20_10_3_2_160";
+////        String targetFile = "targetTerminalA_20_10_3_2_160";
+////        String inputFile = "TerminalB_20_10_3_2_160";
+////        String targetFile = "targetTerminalB_20_10_3_2_160";
+////        String inputFile = "TerminalC_10_10_3_2_80";
+////        String targetFile = "targetTerminalC_10_10_3_2_80";
+////        String inputFile = "TerminalD_10_10_3_2_80";
+////        String targetFile = "targetTerminalD_10_10_3_2_80";
+////        String inputFile = "TerminalE_10_10_3_2_100";
+////        String targetFile = "targetTerminalE_10_10_3_2_100";
+////        String inputFile = "TerminalF_10_10_3_2_100";
+////        String targetFile = "targetTerminalF_10_10_3_2_100";
+//
 //        yard = jsonReader.readInputFile("src/jsonfiles/" + inputFile + ".json", "src/jsonfiles/" + targetFile + ".json");
 //        yard.getDifferences();
 //        System.out.println("Containers to move: " + yard.containersToMove);
