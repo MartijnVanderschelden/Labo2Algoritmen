@@ -12,3 +12,8 @@ Twee mogelijke probleemsituaties
   * SafetyDistance: 1
   * Overlappen niet toegestaan
   * Op zelfde plek niet toegestaan
+
+## Output
+De output wordt weggeschreven naar `/outputFiles` als een `.csv` bestand. Op de eerste regel van het bestand 
+wordt de volgorde en de naam van de gegevens neergeschreven. De overige lijnen bestaan uit elk één kraanbeweging
+met de waarden in dezelfde volgorde als terugtevinden op de eerste regel.
