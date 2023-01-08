@@ -72,16 +72,17 @@ public class Yard {
     }
 
     public void moveContainers(){
-        for(int cIdToMove : containersToMove){
-//            System.out.println("Slotid: " + targetPositionMapContainerKey.get(cIdToMove));
-            int slotIdWithContainerToMove = containers[cIdToMove].slotId;
+        while(!containersToMove.isEmpty()){
+            Container containerToMove = containers[containersToMove.get(0)];
+//            System.out.println("Slotid: " + targetPositionMapContainerKey.get(cIdToMove))
+            int slotIdWithContainerToMove = containerToMove.slotId;
 
             ArrayList<Container> containersToMoveBack = new ArrayList<>();
 
             for(int i = currentPosition.get(slotIdWithContainerToMove).size()-1; i==0; i--){
                 Container topCont = currentPosition.get(slotIdWithContainerToMove).get(i);
-                int targetSlotId = targetPositionMapContainerKey.get(cIdToMove);
-                if(topCont.id == cIdToMove){
+                int targetSlotId = targetPositionMapContainerKey.get(containerToMove.id);
+                if(topCont.equals(containerToMove)){
                     if(ifPossibleToPlace(topCont.length, targetSlotId)){
                         calcCraneMovement(topCont, topCont.slotId, targetSlotId);
                         moveContainer(topCont, targetSlotId);
@@ -95,7 +96,10 @@ public class Yard {
                 } else{
                     int freeSlot = findFreePlace(topCont.length, topCont.slotId);
                     if(freeSlot == -1){
-                        System.out.println("LOL PROBLEEM");
+                        containersToMove.remove(0);
+                        containersToMove.add(containerToMove.id);
+                        System.out.println("PROBLEEM");
+                        break;
                     } else {
                         calcCraneMovement(topCont, topCont.slotId, freeSlot);
                         moveContainer(topCont, freeSlot);
@@ -103,6 +107,8 @@ public class Yard {
                     }
                 }
             }
+            // TODO fix dit. Klopt NIET
+            containersToMove.remove(0);
         }
     }
 
